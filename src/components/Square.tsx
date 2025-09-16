@@ -1,5 +1,3 @@
-import "./Square.css";
-
 interface SquareProps {
   value: string | null;
   onSquareClick: () => void;
