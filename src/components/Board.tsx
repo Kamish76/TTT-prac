@@ -1,5 +1,6 @@
 import { Square } from "./Square";
 import { calculateWinner } from "../../lib/calculateWinner";
+import './board.css';
 
 interface BoardProps {
   xIsNext: boolean;
@@ -29,23 +30,25 @@ export const Board = ({ xIsNext, squares, onPlay }: BoardProps) => {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
 
+  const renderSquare = (i: number) => {
+    return <Square value={squares[i]} onSquareClick={() => handleClick(i)} />;
+  };
+
+  const boardSize = 3;
+  const boardRows = [];
+  for (let i = 0; i < boardSize; i++) {
+    const rowSquares = [];
+    for (let j = 0; j < boardSize; j++) {
+      rowSquares.push(renderSquare(i * boardSize + j));
+    }
+    boardRows.push(<div key={i} className="board-row">{rowSquares}</div>);
+  }
+
   return (
     <>
       <div className="status">{status}</div>
-      <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-      </div>
-      <div className="board-row">
-        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+      <div className="board">
+        {boardRows}
       </div>
     </>
   );
