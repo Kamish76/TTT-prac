@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Board } from "./board.tsx";
+import { Board } from "./Board.tsx";
 
 export const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);

@@ -1,0 +1,17 @@
+.square {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  font-size: var(--square-font-size);
+  font-weight: bold;
+  line-height: var(--square-size);
+  height: var(--square-size);
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: var(--square-size);
+}
+
+.board-row {
+  display: flex;
+}
