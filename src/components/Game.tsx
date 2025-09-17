@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Board } from "./Board.tsx";
+import './game.css';
 
 export const Game = () => {
   const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -18,17 +19,17 @@ export const Game = () => {
   }
 
   const moves = history.map((squares, move) => {
-    const description = "Go To Move " + move;
-
-    if(move <= 0) {
-        return null;
+    let description;
+    if (move > 0) {
+      description = 'Go to move #' + move;
+    } else {
+      description = 'Go to game start';
     }
     return (
-        <li key={move}>
-            <button onClick={() => jumpTo(move)}>{description}</button>
-        </li>
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{description}</button>
+      </li>
     );
-
   });
 
   function restartGame() {
@@ -38,16 +39,18 @@ export const Game = () => {
 
   return (
     <div className="game">
-      <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
-      </div>
-      <div className="game-info">
-        <p>Move History</p>
-        <ol>{moves}</ol>
-
+      <div className="game-container">
+        <div className="game-board">
+          <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+        </div>
         <div className="restart-button">
           <button onClick={() => restartGame()}>Restart Game</button>
         </div>
+      </div>
+      
+      <div className="game-info">
+        <p>Move History</p>
+        <ol>{moves}</ol>
       </div>
     </div>
   );
