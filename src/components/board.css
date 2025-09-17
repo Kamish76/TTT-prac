@@ -1,0 +1,33 @@
+.board {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+  border: 2px solid #cccccc;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.board-row {
+  display: contents;
+}
+
+.status {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #333333;
+}
+
+@media (max-width: 768px) {
+  .board {
+    gap: 5px;
+    padding: 5px;
+  }
+
+  .status {
+    font-size: 20px;
+  }
+}

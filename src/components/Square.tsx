@@ -1,3 +1,4 @@
+import './square.css';
 interface SquareProps {
   value: string | null;
   onSquareClick: () => void;
@@ -5,7 +6,7 @@ interface SquareProps {
 
 export const Square = ({ value, onSquareClick }: SquareProps) => {
   return (
-    <button className="square" onClick={onSquareClick}>
+    <button className={`square ${value ? ' ' + value.toLowerCase() : ''}`} onClick={onSquareClick}>
       {value}
     </button>
   );
